@@ -223,3 +223,4 @@ __marimo__/
 data/raw/*.csv
 dbt_project/target/
 dbt_project/logs/
+
