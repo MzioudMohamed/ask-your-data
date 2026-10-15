@@ -218,3 +218,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Ask-Your-Data
+data/raw/*.csv
+dbt_project/target/
+dbt_project/logs/
