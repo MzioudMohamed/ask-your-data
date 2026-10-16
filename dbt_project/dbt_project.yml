@@ -1,0 +1,4 @@
+name: askdata
+version: "1.0.0"
+profile: askdata
+model-paths: ["models"]
