@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: >
+      One row per order. Items, payments and reviews are aggregated to the order level before joining,
+      so rows are never multiplied. Every order is kept: use is_valid_order to exclude canceled
+      and unavailable orders.
+    columns:
+      - name: order_id
+        description: "Order identifier."
+        data_tests: [unique, not_null]
+      - name: customer_unique_id
+        description: "Identifier of the person. customer_id changes with every order, so it must not be used to identify a customer."
+        data_tests: [not_null]
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [delivered, shipped, canceled, unavailable, invoiced, processing, created, approved]
+      - name: is_valid_order
+        description: "False for canceled and unavailable orders, true otherwise (orders still in progress count as valid). Revenue and order counts are computed on valid orders."
+        data_tests: [not_null]
+      - name: purchased_at
+        data_tests: [not_null]
+      - name: items_revenue
+        description: "Sum of the item prices of the order, freight excluded. Revenue = sum of this column over valid orders."
+      - name: freight_total
+        description: "Sum of the freight values of the order, reported separately from revenue."
+      - name: payments_total
+        description: "Sum of the payments of the order. Not used for revenue: some canceled or unavailable orders carry payments but no items."
+      - name: review_score
+        description: "Score (1 to 5) of the most recent review of the order; null when the order has no review."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5]
+                quote: false
+      - name: has_delivery_data
+        description: "True when the order is delivered and has a delivery date. Delivery metrics are only computed in that case."
+      - name: delivery_days
+        description: "Days between purchase and delivery."
+      - name: delivery_delay_days
+        description: "Days between the estimated and the actual delivery date. Positive means late."
+      - name: is_late
+        description: "True when delivered after the estimated delivery date."
+
+  - name: fct_order_items
+    description: "One row per item sold, with product category (English name when available), customer state and seller state."
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fct_orders')
+                field: order_id
+      - name: is_valid_order
+        data_tests: [not_null]
+      - name: product_category
+        description: "English category name when a translation exists, otherwise the Portuguese name, otherwise 'unknown'."
+        data_tests: [not_null]
+
+  - name: dim_customers
+    description: >
+      One row per person, built from valid orders only. Supports the repurchase rate and monthly
+      cohorts. A repurchase is a second valid order. A customer is observable at 90 or 180 days
+      only if that delay fits before the last purchase date of the data; repurchase rates must
+      only be computed on observable customers.
+    columns:
+      - name: customer_unique_id
+        data_tests: [unique, not_null]
+      - name: first_purchase_at
+        data_tests: [not_null]
+      - name: valid_orders_count
+        data_tests: [not_null]
+      - name: cohort_month
+        description: "Month of the first valid order."
+      - name: is_repeat_customer
+        description: "True when the person has at least 2 valid orders."
+      - name: repurchased_within_90d
+        description: "True when the second valid order comes within 90 days of the first."
+      - name: repurchased_within_180d
+        description: "True when the second valid order comes within 180 days of the first."
+      - name: is_observable_90d
+        description: "True when first purchase + 90 days is on or before the last purchase date of the data."
+      - name: is_observable_180d
+        description: "True when first purchase + 180 days is on or before the last purchase date of the data."
