@@ -1,0 +1,224 @@
+version: 1
+dataset: "Olist Brazilian e-commerce, loaded in PostgreSQL and modelled with dbt (staging, then marts)"
+
+entries:
+  - id: data_coverage
+    type: concept
+    name_en: Data coverage and reference date
+    name_fr: Période couverte et date de référence
+    synonyms: ["date range", "période couverte", "last month", "dernier mois", "this year", "cette année", "recent", "récent", "today", "aujourd'hui"]
+    definition_en: >
+      Purchases span 2016-09-04 to 2018-10-17. The reliable window is January 2017 to August 2018.
+      2016 (329 orders) and September-October 2018 (20 orders) are very sparse and incomplete.
+      Relative dates such as "last month" or "this year" refer to the last purchase date in the data
+      (2018-10-17), never to the real current date.
+    definition_fr: >
+      Les achats couvrent du 2016-09-04 au 2018-10-17. La période fiable va de janvier 2017 à août 2018.
+      2016 (329 commandes) et septembre-octobre 2018 (20 commandes) sont très peu fournis et incomplets.
+      Les dates relatives comme « le mois dernier » ou « cette année » se calculent par rapport à la dernière
+      date d'achat des données (2018-10-17), jamais par rapport à la date réelle du jour.
+    caveats:
+      - "The last complete month is August 2018. A question about September or October 2018 must warn that those months are incomplete."
+    example_questions:
+      - "Sur quelle période portent les données ?"
+      - "What time range does the data cover?"
+
+  - id: valid_order
+    type: concept
+    name_en: Valid order
+    name_fr: Commande valide
+    synonyms: ["valid orders", "commandes valides", "real orders", "vraies commandes", "effective sales", "ventes effectives"]
+    definition_en: >
+      An order whose status is neither canceled nor unavailable. Orders still in progress (created, approved,
+      invoiced, processing, shipped) count as valid. Revenue and order-count metrics are computed on valid orders only.
+    definition_fr: >
+      Une commande dont le statut n'est ni canceled (annulée) ni unavailable (indisponible). Les commandes encore
+      en cours (created, approved, invoiced, processing, shipped) sont valides. Le chiffre d'affaires et le nombre
+      de commandes ne portent que sur les commandes valides.
+    model: marts.fct_orders
+    columns: [order_status, is_valid_order]
+    sql: "is_valid_order"
+    caveats:
+      - "In this dataset 1,234 of the 99,441 orders are not valid (625 canceled, 609 unavailable)."
+    example_questions:
+      - "Qu'est-ce qu'une commande valide ?"
+      - "Which orders are excluded from revenue?"
+
+  - id: revenue
+    type: metric
+    name_en: Revenue
+    name_fr: Chiffre d'affaires
+    synonyms: ["sales", "ventes", "CA", "turnover", "revenu", "montant des ventes"]
+    definition_en: >
+      Sum of the item prices of valid orders, freight excluded. Payments are not used as the source of revenue
+      because some canceled or unavailable orders carry payments but no items.
+    definition_fr: >
+      Somme des prix des articles des commandes valides, transport exclu. Les paiements ne servent pas de source
+      au chiffre d'affaires : certaines commandes annulées ou indisponibles ont des paiements mais aucun article.
+    model: marts.fct_orders
+    columns: [items_revenue, is_valid_order]
+    sql: "sum(items_revenue)"
+    filters: ["is_valid_order"]
+    dimensions: [purchase_month, customer_state]
+    alt_model: marts.fct_order_items
+    alt_columns: [price, is_valid_order]
+    alt_sql: "sum(price)"
+    alt_dimensions: [purchase_month, product_category, customer_state, seller_state]
+    unit: "BRL (Brazilian reais, as in the source data)"
+    caveats:
+      - "Freight is reported separately (freight_total, freight_value) and is never added to revenue."
+      - "Use fct_order_items when the question breaks revenue down by product category or seller."
+    example_questions:
+      - "Quel est le chiffre d'affaires par mois en 2017 ?"
+      - "What is the revenue by product category?"
+
+  - id: orders_count
+    type: metric
+    name_en: Number of orders
+    name_fr: Nombre de commandes
+    synonyms: ["order count", "orders", "commandes", "volume de commandes", "number of orders"]
+    definition_en: >
+      Number of valid orders. Orders still in progress are counted, including the few (8) that have no items yet.
+    definition_fr: >
+      Nombre de commandes valides. Les commandes encore en cours sont comptées, y compris les quelques-unes (8)
+      qui n'ont pas encore d'articles.
+    model: marts.fct_orders
+    columns: [order_id, is_valid_order]
+    sql: "count(*)"
+    filters: ["is_valid_order"]
+    dimensions: [purchase_month, customer_state, order_status]
+    example_questions:
+      - "Combien de commandes par mois ?"
+      - "How many orders were placed in each state?"
+
+  - id: average_basket
+    type: metric
+    name_en: Average basket
+    name_fr: Panier moyen
+    synonyms: ["average order value", "AOV", "ticket moyen", "valeur moyenne des commandes"]
+    definition_en: >
+      Revenue divided by the number of valid orders that have at least one item. Freight is excluded.
+    definition_fr: >
+      Chiffre d'affaires divisé par le nombre de commandes valides qui ont au moins un article. Transport exclu.
+    model: marts.fct_orders
+    columns: [items_revenue, items_count, is_valid_order]
+    sql: "sum(items_revenue) / nullif(count(*), 0)"
+    filters: ["is_valid_order", "items_count > 0"]
+    dimensions: [purchase_month, customer_state]
+    unit: "BRL"
+    example_questions:
+      - "Quel est le panier moyen par état ?"
+      - "What is the average order value over time?"
+
+  - id: delivery_time
+    type: metric
+    name_en: Delivery time
+    name_fr: Délai de livraison
+    synonyms: ["delivery duration", "lead time", "temps de livraison", "durée de livraison"]
+    definition_en: >
+      Average number of days between purchase and delivery to the customer, for delivered orders that have
+      a delivery date.
+    definition_fr: >
+      Nombre moyen de jours entre l'achat et la livraison au client, pour les commandes livrées qui ont
+      une date de livraison.
+    model: marts.fct_orders
+    columns: [delivery_days, has_delivery_data]
+    sql: "avg(delivery_days)"
+    filters: ["has_delivery_data"]
+    dimensions: [purchase_month, customer_state]
+    unit: "days"
+    caveats:
+      - "Orders not delivered yet, and the few delivered orders without a delivery date, are excluded."
+    example_questions:
+      - "Quel est le délai de livraison moyen par état ?"
+      - "How long does delivery take on average?"
+
+  - id: late_delivery_rate
+    type: metric
+    name_en: Late delivery rate
+    name_fr: Taux de retard de livraison
+    synonyms: ["late deliveries", "delivery delay", "retard de livraison", "livraisons en retard", "taux de retard"]
+    definition_en: >
+      Share of delivered orders (with a delivery date) that arrived after the estimated delivery date.
+    definition_fr: >
+      Part des commandes livrées (avec date de livraison) arrivées après la date de livraison estimée.
+    model: marts.fct_orders
+    columns: [is_late, has_delivery_data]
+    sql: "count(*) filter (where is_late) * 1.0 / nullif(count(*), 0)"
+    filters: ["has_delivery_data"]
+    dimensions: [purchase_month, customer_state]
+    unit: "share between 0 and 1"
+    caveats:
+      - "The on-time rate is 1 minus the late rate."
+      - "The average delay in days is avg(delivery_delay_days): positive means late, negative means early."
+    example_questions:
+      - "Quel est le taux de livraisons en retard ?"
+      - "Which states have the most late deliveries?"
+
+  - id: average_review_score
+    type: metric
+    name_en: Average review score
+    name_fr: Note client moyenne
+    synonyms: ["customer rating", "average rating", "review score", "satisfaction", "avis clients", "note moyenne"]
+    definition_en: >
+      Average score (1 to 5) of the most recent review of each valid order that has a review.
+    definition_fr: >
+      Note moyenne (de 1 à 5) du dernier avis de chaque commande valide qui a un avis.
+    model: marts.fct_orders
+    columns: [review_score, is_valid_order]
+    sql: "avg(review_score)"
+    filters: ["is_valid_order", "review_score is not null"]
+    dimensions: [purchase_month, customer_state]
+    unit: "score from 1 to 5"
+    caveats:
+      - "When an order has several reviews, only the most recent one counts. Orders without a review are excluded."
+    example_questions:
+      - "Quelle est la note moyenne des clients par mois ?"
+      - "How satisfied are customers on average?"
+
+  - id: repurchase_rate
+    type: metric
+    name_en: Repurchase rate
+    name_fr: Taux de réachat
+    synonyms: ["repeat purchase rate", "retention", "rétention", "fidélisation", "repeat customers", "clients fidèles", "cohort", "cohorte"]
+    definition_en: >
+      Share of customers who place a second valid order within 90 or 180 days of their first valid order
+      (180 days by default), among customers observable for the whole window. A customer is a person identified
+      by customer_unique_id, never by customer_id. The cohort of a customer is the month of their first valid order.
+    definition_fr: >
+      Part des clients qui passent une deuxième commande valide dans les 90 ou 180 jours suivant leur première
+      commande valide (180 jours par défaut), parmi les clients observables sur toute la durée. Un client est une
+      personne identifiée par customer_unique_id, jamais par customer_id. La cohorte d'un client est le mois de sa
+      première commande valide.
+    model: marts.dim_customers
+    columns: [repurchased_within_90d, repurchased_within_180d, is_observable_90d, is_observable_180d, cohort_month]
+    sql_90d: "count(*) filter (where repurchased_within_90d) * 1.0 / nullif(count(*), 0)"
+    filters_90d: ["is_observable_90d"]
+    sql_180d: "count(*) filter (where repurchased_within_180d) * 1.0 / nullif(count(*), 0)"
+    filters_180d: ["is_observable_180d"]
+    dimensions: [cohort_month, customer_state]
+    unit: "share between 0 and 1"
+    caveats:
+      - "A customer is observable at 90 or 180 days only if first purchase + that delay is on or before the last purchase date of the data. Rates must only be computed on observable customers."
+      - "The rate is very low in this dataset (around 3 percent), so rates for small monthly cohorts are noisy and must not be over-interpreted."
+    example_questions:
+      - "Quel est le taux de réachat à 180 jours par cohorte mensuelle ?"
+      - "How many customers come back within 90 days?"
+
+  - id: churn
+    type: unsupported
+    name_en: Churn
+    name_fr: Churn (attrition)
+    synonyms: ["customer churn", "attrition", "taux d'attrition", "lost customers", "clients perdus", "customer loss"]
+    definition_en: >
+      Churn is not defined for this dataset. About 97 percent of customers placed a single order, so a rule such as
+      "no order in the last N days" would flag almost everybody as churned and would not discriminate between customers.
+      The copilot must say so and offer the repurchase rate instead.
+    definition_fr: >
+      Le churn n'est pas défini pour ce jeu de données. Environ 97 % des clients n'ont passé qu'une seule commande :
+      une règle comme « aucune commande depuis N jours » classerait presque tout le monde comme perdu, sans distinguer
+      les clients. Le copilote doit l'expliquer et proposer le taux de réachat à la place.
+    redirect_to: repurchase_rate
+    example_questions:
+      - "Quel est le taux de churn ?"
+      - "What is the customer churn rate?"
