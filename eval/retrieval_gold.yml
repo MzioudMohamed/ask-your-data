@@ -1,0 +1,56 @@
+version: 1
+# Test questions for the glossary retrieval.
+# They are worded differently from the example_questions stored in glossary/metrics.yml,
+# because those examples are part of the indexed text.
+# expected: acceptable glossary entry ids. An empty list means the question is out of scope.
+# hard: true marks questions that share few words with the expected definition or sit close to another entry.
+questions:
+  # revenue
+  - {id: q01, lang: fr, text: "Combien d'argent avons-nous encaissé en 2017 ?", expected: [revenue]}
+  - {id: q02, lang: en, text: "How much merchandise did we sell in total?", expected: [revenue]}
+  - {id: q03, lang: fr, text: "Quel montant total de ventes en 2018 ?", expected: [revenue]}
+  - {id: q04, lang: en, text: "Does revenue include shipping fees?", expected: [revenue], hard: true}
+  # orders_count
+  - {id: q05, lang: fr, text: "Combien de commandes ont été passées en 2017 ?", expected: [orders_count]}
+  - {id: q06, lang: en, text: "Which state generates the most orders?", expected: [orders_count]}
+  - {id: q07, lang: en, text: "How many purchases were made in total?", expected: [orders_count]}
+  # average_basket
+  - {id: q08, lang: fr, text: "Quel est le montant moyen dépensé par commande ?", expected: [average_basket]}
+  - {id: q09, lang: en, text: "What is the typical amount a customer spends per purchase?", expected: [average_basket], hard: true}
+  - {id: q10, lang: fr, text: "Combien dépense en moyenne un client à chaque achat ?", expected: [average_basket]}
+  # delivery_time
+  - {id: q11, lang: fr, text: "Combien de jours faut-il pour recevoir un colis ?", expected: [delivery_time]}
+  - {id: q12, lang: en, text: "How fast do we deliver to customers in each region?", expected: [delivery_time], hard: true}
+  - {id: q13, lang: fr, text: "Quelle est la durée moyenne entre la commande et la réception ?", expected: [delivery_time]}
+  # late_delivery_rate
+  - {id: q14, lang: fr, text: "Quelle part des colis arrive après la date promise ?", expected: [late_delivery_rate]}
+  - {id: q15, lang: en, text: "How often do parcels arrive later than announced?", expected: [late_delivery_rate]}
+  - {id: q16, lang: fr, text: "Quel pourcentage de livraisons respecte le délai annoncé ?", expected: [late_delivery_rate], hard: true}
+  # average_review_score
+  - {id: q17, lang: en, text: "Are buyers pleased with what they receive?", expected: [average_review_score], hard: true}
+  - {id: q18, lang: fr, text: "Que pensent les acheteurs des produits reçus ?", expected: [average_review_score], hard: true}
+  - {id: q19, lang: en, text: "What rating do customers give us?", expected: [average_review_score]}
+  # repurchase_rate
+  - {id: q20, lang: fr, text: "Quelle proportion de clients achète une deuxième fois ?", expected: [repurchase_rate]}
+  - {id: q21, lang: en, text: "Customer loyalty: how many buyers come back?", expected: [repurchase_rate]}
+  - {id: q22, lang: fr, text: "Quels clients reviennent commander dans les six mois ?", expected: [repurchase_rate]}
+  # churn
+  - {id: q23, lang: en, text: "What percentage of customers stopped buying from us?", expected: [churn], hard: true}
+  - {id: q24, lang: fr, text: "Combien de clients avons-nous perdus cette année ?", expected: [churn]}
+  - {id: q25, lang: en, text: "What is our customer attrition?", expected: [churn]}
+  # valid_order
+  - {id: q26, lang: fr, text: "Pourquoi certaines commandes n'apparaissent-elles pas dans les chiffres ?", expected: [valid_order], hard: true}
+  - {id: q27, lang: en, text: "Do canceled orders count in the sales numbers?", expected: [valid_order]}
+  - {id: q28, lang: fr, text: "Les commandes en cours de livraison sont-elles comptées ?", expected: [valid_order]}
+  # data_coverage
+  - {id: q29, lang: fr, text: "Jusqu'à quelle date vont les données ?", expected: [data_coverage]}
+  - {id: q30, lang: en, text: "What is the latest order date available?", expected: [data_coverage]}
+  - {id: q31, lang: fr, text: "Les chiffres de 2016 sont-ils fiables ?", expected: [data_coverage]}
+  - {id: q32, lang: en, text: "Which months can I trust for trends?", expected: [data_coverage], hard: true}
+  # out of scope: nothing in the glossary should match
+  - {id: q33, lang: fr, text: "Quel temps fera-t-il à São Paulo demain ?", expected: []}
+  - {id: q34, lang: en, text: "Who won the football world cup?", expected: []}
+  - {id: q35, lang: fr, text: "Quelle est la marge bénéficiaire par produit ?", expected: []}
+  - {id: q36, lang: en, text: "What is the customer lifetime value?", expected: []}
+  - {id: q37, lang: fr, text: "Écris-moi un poème sur le commerce en ligne.", expected: []}
+  - {id: q38, lang: en, text: "How many website visitors did we have?", expected: []}
