@@ -5,8 +5,7 @@ import yaml
 from psycopg.types.json import Jsonb
 
 from askdata import config
-from askdata.rag.embeddings import embed
-
+from askdata.rag.embeddings import embed, to_pgvector
 
 def load_entries():
     with open(config.GLOSSARY_PATH, encoding="utf-8") as f:
@@ -27,9 +26,6 @@ def build_chunk_text(entry):
         lines.append("Example question: " + question)
     return "\n".join(lines)
 
-
-def to_pgvector(vector):
-    return "[" + ",".join(str(x) for x in vector) + "]"
 
 
 def main():

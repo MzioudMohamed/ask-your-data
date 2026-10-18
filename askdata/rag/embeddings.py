@@ -13,3 +13,7 @@ def embed(texts, model=None):
     )
     response.raise_for_status()
     return response.json()["embeddings"]
+
+def to_pgvector(vector):
+    """Format a list of floats as a pgvector literal, for example [0.1,0.2]."""
+    return "[" + ",".join(str(x) for x in vector) + "]"

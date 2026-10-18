@@ -14,3 +14,8 @@ DB = {
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "qwen3-embedding:0.6b")
 GLOSSARY_PATH = PROJECT_ROOT / "glossary" / "metrics.yml"
+
+QUERY_INSTRUCTION = (
+    "Given a business question about e-commerce analytics, "
+    "retrieve the glossary entry that defines the metric or concept the question asks about"
+)
