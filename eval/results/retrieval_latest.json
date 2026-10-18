@@ -1,0 +1,1959 @@
+{
+  "summaries": [
+    {
+      "model": "qwen3-embedding:0.6b",
+      "hit1": 0.84375,
+      "hit3": 0.96875,
+      "mrr3": 0.90625,
+      "hit1_fr": 0.8235294117647058,
+      "hit1_en": 0.8666666666666667,
+      "hit1_hard": 0.5555555555555556,
+      "median_ms": 2339.762950025033,
+      "cold_ms": 2291.1402000463568,
+      "in_scope_min_similarity": 0.47400489914331767,
+      "out_of_scope_max_similarity": 0.4566285746285481,
+      "threshold": 0.47400489914331767,
+      "threshold_accuracy": 1.0
+    },
+    {
+      "model": "bge-m3",
+      "hit1": 0.75,
+      "hit3": 0.9375,
+      "mrr3": 0.8385416666666666,
+      "hit1_fr": 0.7058823529411765,
+      "hit1_en": 0.8,
+      "hit1_hard": 0.5555555555555556,
+      "median_ms": 2190.0605999981053,
+      "cold_ms": 2165.6553999637254,
+      "in_scope_min_similarity": 0.4505687028508998,
+      "out_of_scope_max_similarity": 0.5366845639504042,
+      "threshold": 0.4505687028508998,
+      "threshold_accuracy": 0.9473684210526315
+    },
+    {
+      "model": "embeddinggemma",
+      "hit1": 0.875,
+      "hit3": 1.0,
+      "mrr3": 0.9322916666666666,
+      "hit1_fr": 0.8235294117647058,
+      "hit1_en": 0.9333333333333333,
+      "hit1_hard": 0.7777777777777778,
+      "median_ms": 2169.077050028136,
+      "cold_ms": 2138.234999962151,
+      "in_scope_min_similarity": 0.298945110784804,
+      "out_of_scope_max_similarity": 0.34048183673836996,
+      "threshold": 0.298945110784804,
+      "threshold_accuracy": 0.9736842105263158
+    }
+  ],
+  "details": {
+    "qwen3-embedding:0.6b": [
+      {
+        "id": "q01",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "average_basket",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.5523282493958273,
+        "rank": 1,
+        "ms": 2347.7354000206105
+      },
+      {
+        "id": "q02",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "orders_count",
+          "average_basket"
+        ],
+        "top1_similarity": 0.5174553702745072,
+        "rank": 1,
+        "ms": 2339.6664000465535
+      },
+      {
+        "id": "q03",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "average_basket",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.6211964488029524,
+        "rank": 1,
+        "ms": 2400.4905999754556
+      },
+      {
+        "id": "q04",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "average_basket",
+          "valid_order"
+        ],
+        "top1_similarity": 0.5502268403903756,
+        "rank": 1,
+        "ms": 2329.4342000153847
+      },
+      {
+        "id": "q05",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "average_basket"
+        ],
+        "top1_similarity": 0.6737145574433187,
+        "rank": 1,
+        "ms": 2370.0143999885768
+      },
+      {
+        "id": "q06",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "average_basket"
+        ],
+        "top1_similarity": 0.5140405280541781,
+        "rank": 1,
+        "ms": 2339.859500003513
+      },
+      {
+        "id": "q07",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "orders_count",
+          "revenue",
+          "average_basket"
+        ],
+        "top1_similarity": 0.5345088633842432,
+        "rank": 1,
+        "ms": 2320.2395999687724
+      },
+      {
+        "id": "q08",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "average_basket",
+          "average_review_score",
+          "orders_count"
+        ],
+        "top1_similarity": 0.6793462431625679,
+        "rank": 1,
+        "ms": 2340.172399999574
+      },
+      {
+        "id": "q09",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "average_basket",
+          "churn"
+        ],
+        "top1_similarity": 0.49399918246259833,
+        "rank": 2,
+        "ms": 2349.3018000153825
+      },
+      {
+        "id": "q10",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "average_basket",
+          "average_review_score",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.5869034139880113,
+        "rank": 1,
+        "ms": 2359.917099995073
+      },
+      {
+        "id": "q11",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.6380175161953543,
+        "rank": 1,
+        "ms": 2359.736400016118
+      },
+      {
+        "id": "q12",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.5757537321604053,
+        "rank": 2,
+        "ms": 2329.616100003477
+      },
+      {
+        "id": "q13",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.6967365172568526,
+        "rank": 1,
+        "ms": 2350.24360002717
+      },
+      {
+        "id": "q14",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.6581077191073265,
+        "rank": 1,
+        "ms": 2309.355399978813
+      },
+      {
+        "id": "q15",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.6658543148419757,
+        "rank": 1,
+        "ms": 2350.265000015497
+      },
+      {
+        "id": "q16",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.7071707808520771,
+        "rank": 1,
+        "ms": 2309.4776999787427
+      },
+      {
+        "id": "q17",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "average_review_score",
+          "repurchase_rate",
+          "churn"
+        ],
+        "top1_similarity": 0.47445060541177875,
+        "rank": 1,
+        "ms": 2370.581900002435
+      },
+      {
+        "id": "q18",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "average_review_score",
+          "churn"
+        ],
+        "top1_similarity": 0.5487064661137853,
+        "rank": 2,
+        "ms": 2319.758100027684
+      },
+      {
+        "id": "q19",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "average_review_score",
+          "repurchase_rate",
+          "churn"
+        ],
+        "top1_similarity": 0.6306721444516108,
+        "rank": 1,
+        "ms": 2329.1832999675535
+      },
+      {
+        "id": "q20",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "late_delivery_rate"
+        ],
+        "top1_similarity": 0.7138682603836263,
+        "rank": 1,
+        "ms": 2310.421400004998
+      },
+      {
+        "id": "q21",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.6414194534517397,
+        "rank": 1,
+        "ms": 2330.0069000106305
+      },
+      {
+        "id": "q22",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.7125213235566654,
+        "rank": 1,
+        "ms": 2340.839300013613
+      },
+      {
+        "id": "q23",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "repurchase_rate",
+          "late_delivery_rate"
+        ],
+        "top1_similarity": 0.6478170089067252,
+        "rank": 1,
+        "ms": 2348.6573999980465
+      },
+      {
+        "id": "q24",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "repurchase_rate",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.6591916477198684,
+        "rank": 1,
+        "ms": 2369.770099991001
+      },
+      {
+        "id": "q25",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "repurchase_rate",
+          "late_delivery_rate"
+        ],
+        "top1_similarity": 0.6997965246014575,
+        "rank": 1,
+        "ms": 2330.3869999945164
+      },
+      {
+        "id": "q26",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "revenue"
+        ],
+        "top1_similarity": 0.6598061347701114,
+        "rank": 2,
+        "ms": 2359.1432999819517
+      },
+      {
+        "id": "q27",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "valid_order",
+          "orders_count",
+          "revenue"
+        ],
+        "top1_similarity": 0.5481097583509223,
+        "rank": 1,
+        "ms": 2330.0007000216283
+      },
+      {
+        "id": "q28",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "orders_count",
+          "delivery_time",
+          "late_delivery_rate"
+        ],
+        "top1_similarity": 0.6116078131432743,
+        "rank": null,
+        "ms": 2370.41589996079
+      },
+      {
+        "id": "q29",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "delivery_time",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.7142807926462648,
+        "rank": 1,
+        "ms": 2349.932599987369
+      },
+      {
+        "id": "q30",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "valid_order",
+          "late_delivery_rate"
+        ],
+        "top1_similarity": 0.5666492760212776,
+        "rank": 1,
+        "ms": 2339.505799987819
+      },
+      {
+        "id": "q31",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "valid_order",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.512197289525663,
+        "rank": 1,
+        "ms": 2360.0853999960236
+      },
+      {
+        "id": "q32",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "repurchase_rate",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.47400489914331767,
+        "rank": 1,
+        "ms": 2329.2720999452285
+      },
+      {
+        "id": "q33",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.4566285746285481,
+        "rank": null,
+        "ms": 2329.7986999969
+      },
+      {
+        "id": "q34",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "average_review_score",
+          "average_basket",
+          "churn"
+        ],
+        "top1_similarity": 0.17442041115700047,
+        "rank": null,
+        "ms": 2310.430700017605
+      },
+      {
+        "id": "q35",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "average_basket",
+          "revenue",
+          "valid_order"
+        ],
+        "top1_similarity": 0.4070071016524782,
+        "rank": null,
+        "ms": 2321.062000002712
+      },
+      {
+        "id": "q36",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "repurchase_rate",
+          "average_basket",
+          "delivery_time"
+        ],
+        "top1_similarity": 0.41425146119322753,
+        "rank": null,
+        "ms": 2298.6341000068933
+      },
+      {
+        "id": "q37",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "average_basket",
+          "orders_count",
+          "revenue"
+        ],
+        "top1_similarity": 0.44310788337447415,
+        "rank": null,
+        "ms": 2370.108099945355
+      },
+      {
+        "id": "q38",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "orders_count",
+          "revenue",
+          "average_basket"
+        ],
+        "top1_similarity": 0.43328441382329297,
+        "rank": null,
+        "ms": 2320.6039000069723
+      }
+    ],
+    "bge-m3": [
+      {
+        "id": "q01",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "data_coverage",
+          "average_basket"
+        ],
+        "top1_similarity": 0.4817880535658787,
+        "rank": 1,
+        "ms": 2229.5426999917254
+      },
+      {
+        "id": "q02",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "repurchase_rate",
+          "average_basket"
+        ],
+        "top1_similarity": 0.4607513453368104,
+        "rank": 1,
+        "ms": 2190.0000000023283
+      },
+      {
+        "id": "q03",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "data_coverage",
+          "revenue",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.4505687028508998,
+        "rank": 2,
+        "ms": 2200.7563000079244
+      },
+      {
+        "id": "q04",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "average_basket",
+          "late_delivery_rate"
+        ],
+        "top1_similarity": 0.6044055446128133,
+        "rank": 1,
+        "ms": 2159.784999967087
+      },
+      {
+        "id": "q05",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "orders_count",
+          "data_coverage",
+          "valid_order"
+        ],
+        "top1_similarity": 0.4977704874648443,
+        "rank": 1,
+        "ms": 2188.6565999593586
+      },
+      {
+        "id": "q06",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "average_basket"
+        ],
+        "top1_similarity": 0.5065984137771947,
+        "rank": 1,
+        "ms": 2180.6166999740526
+      },
+      {
+        "id": "q07",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "data_coverage",
+          "valid_order"
+        ],
+        "top1_similarity": 0.5098683834075928,
+        "rank": null,
+        "ms": 2200.5300000309944
+      },
+      {
+        "id": "q08",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "average_basket",
+          "revenue",
+          "orders_count"
+        ],
+        "top1_similarity": 0.5754316187751987,
+        "rank": 1,
+        "ms": 2168.9072999870405
+      },
+      {
+        "id": "q09",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "average_basket",
+          "revenue"
+        ],
+        "top1_similarity": 0.5681974467878229,
+        "rank": 2,
+        "ms": 2189.8606999893673
+      },
+      {
+        "id": "q10",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "average_review_score",
+          "revenue"
+        ],
+        "top1_similarity": 0.5466240215149353,
+        "rank": null,
+        "ms": 2189.7788000060245
+      },
+      {
+        "id": "q11",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.6618383518168469,
+        "rank": 1,
+        "ms": 2180.348000023514
+      },
+      {
+        "id": "q12",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.49028194182351026,
+        "rank": 1,
+        "ms": 2229.5388000202365
+      },
+      {
+        "id": "q13",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.6790090372541054,
+        "rank": 1,
+        "ms": 2199.9525999999605
+      },
+      {
+        "id": "q14",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.6674870457404061,
+        "rank": 1,
+        "ms": 2190.730699978303
+      },
+      {
+        "id": "q15",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.6455147941345373,
+        "rank": 1,
+        "ms": 2189.1992000164464
+      },
+      {
+        "id": "q16",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.6335968068112421,
+        "rank": 1,
+        "ms": 2230.674899998121
+      },
+      {
+        "id": "q17",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "average_review_score",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.5236918301949741,
+        "rank": 2,
+        "ms": 2188.7642000219785
+      },
+      {
+        "id": "q18",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "delivery_time",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.5207809675438098,
+        "rank": 3,
+        "ms": 2199.767799989786
+      },
+      {
+        "id": "q19",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "average_review_score",
+          "repurchase_rate",
+          "churn"
+        ],
+        "top1_similarity": 0.6105195779537498,
+        "rank": 1,
+        "ms": 2169.9467999860644
+      },
+      {
+        "id": "q20",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.660079519739213,
+        "rank": 1,
+        "ms": 2179.6950999996625
+      },
+      {
+        "id": "q21",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "revenue"
+        ],
+        "top1_similarity": 0.6093084709599957,
+        "rank": 1,
+        "ms": 2190.3719999827445
+      },
+      {
+        "id": "q22",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.5849813178126231,
+        "rank": 1,
+        "ms": 2219.569400011096
+      },
+      {
+        "id": "q23",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "repurchase_rate",
+          "revenue"
+        ],
+        "top1_similarity": 0.4949879179848381,
+        "rank": 1,
+        "ms": 2309.608899988234
+      },
+      {
+        "id": "q24",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "data_coverage",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.49462163255991487,
+        "rank": 1,
+        "ms": 2190.1211999938823
+      },
+      {
+        "id": "q25",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "repurchase_rate",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.5736867794876029,
+        "rank": 1,
+        "ms": 2200.0856999657117
+      },
+      {
+        "id": "q26",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "churn"
+        ],
+        "top1_similarity": 0.592260821943675,
+        "rank": 2,
+        "ms": 2220.257099950686
+      },
+      {
+        "id": "q27",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "valid_order",
+          "churn",
+          "revenue"
+        ],
+        "top1_similarity": 0.5821053483611927,
+        "rank": 1,
+        "ms": 2179.110400029458
+      },
+      {
+        "id": "q28",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "revenue"
+        ],
+        "top1_similarity": 0.640028915403642,
+        "rank": 2,
+        "ms": 2210.0900000077672
+      },
+      {
+        "id": "q29",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "repurchase_rate",
+          "churn"
+        ],
+        "top1_similarity": 0.615825245276244,
+        "rank": 1,
+        "ms": 2210.6598999816924
+      },
+      {
+        "id": "q30",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "valid_order",
+          "delivery_time"
+        ],
+        "top1_similarity": 0.6062740303492165,
+        "rank": 1,
+        "ms": 2158.7355000083335
+      },
+      {
+        "id": "q31",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "valid_order",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.5499142199601572,
+        "rank": 1,
+        "ms": 2180.1211000420153
+      },
+      {
+        "id": "q32",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "repurchase_rate",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.5559092097391628,
+        "rank": 1,
+        "ms": 2210.1448999601416
+      },
+      {
+        "id": "q33",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "data_coverage",
+          "late_delivery_rate",
+          "churn"
+        ],
+        "top1_similarity": 0.3380574802400096,
+        "rank": null,
+        "ms": 2220.06009996403
+      },
+      {
+        "id": "q34",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "revenue",
+          "late_delivery_rate",
+          "valid_order"
+        ],
+        "top1_similarity": 0.2946566114443645,
+        "rank": null,
+        "ms": 2180.8998999767937
+      },
+      {
+        "id": "q35",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "revenue",
+          "average_basket",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.5366845639504042,
+        "rank": null,
+        "ms": 2189.42229996901
+      },
+      {
+        "id": "q36",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "repurchase_rate",
+          "average_review_score",
+          "churn"
+        ],
+        "top1_similarity": 0.4742257595062256,
+        "rank": null,
+        "ms": 2168.5620000353083
+      },
+      {
+        "id": "q37",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "churn",
+          "valid_order",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.4152287689261025,
+        "rank": null,
+        "ms": 2200.418399996124
+      },
+      {
+        "id": "q38",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "repurchase_rate",
+          "data_coverage",
+          "churn"
+        ],
+        "top1_similarity": 0.4326426885597038,
+        "rank": null,
+        "ms": 2189.945899997838
+      }
+    ],
+    "embeddinggemma": [
+      {
+        "id": "q01",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "data_coverage",
+          "average_basket"
+        ],
+        "top1_similarity": 0.3449914908368936,
+        "rank": 1,
+        "ms": 2159.8728999961168
+      },
+      {
+        "id": "q02",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "orders_count",
+          "valid_order"
+        ],
+        "top1_similarity": 0.298945110784804,
+        "rank": 1,
+        "ms": 2169.8487999965437
+      },
+      {
+        "id": "q03",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "valid_order",
+          "orders_count"
+        ],
+        "top1_similarity": 0.3486779477232693,
+        "rank": 1,
+        "ms": 2139.782499987632
+      },
+      {
+        "id": "q04",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "revenue"
+        ],
+        "top3": [
+          "revenue",
+          "average_basket",
+          "valid_order"
+        ],
+        "top1_similarity": 0.5052017569541931,
+        "rank": 1,
+        "ms": 2170.23029999109
+      },
+      {
+        "id": "q05",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "revenue"
+        ],
+        "top1_similarity": 0.42465301449932047,
+        "rank": 1,
+        "ms": 2179.797399963718
+      },
+      {
+        "id": "q06",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "average_basket"
+        ],
+        "top1_similarity": 0.3981367476608195,
+        "rank": 1,
+        "ms": 2170.035499962978
+      },
+      {
+        "id": "q07",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "orders_count"
+        ],
+        "top3": [
+          "orders_count",
+          "repurchase_rate",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.36440123743996167,
+        "rank": 1,
+        "ms": 2160.1153000374325
+      },
+      {
+        "id": "q08",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "average_basket",
+          "average_review_score",
+          "orders_count"
+        ],
+        "top1_similarity": 0.443662003941957,
+        "rank": 1,
+        "ms": 2189.6728999563493
+      },
+      {
+        "id": "q09",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "average_review_score",
+          "average_basket"
+        ],
+        "top1_similarity": 0.38822643441079796,
+        "rank": 3,
+        "ms": 2151.570299989544
+      },
+      {
+        "id": "q10",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_basket"
+        ],
+        "top3": [
+          "average_review_score",
+          "average_basket",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.38969910802251073,
+        "rank": 2,
+        "ms": 2148.118099954445
+      },
+      {
+        "id": "q11",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.45181257107109274,
+        "rank": 1,
+        "ms": 2209.5702000078745
+      },
+      {
+        "id": "q12",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.4350579082965882,
+        "rank": 1,
+        "ms": 2149.823399959132
+      },
+      {
+        "id": "q13",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "delivery_time"
+        ],
+        "top3": [
+          "delivery_time",
+          "late_delivery_rate",
+          "orders_count"
+        ],
+        "top1_similarity": 0.5208247589573491,
+        "rank": 1,
+        "ms": 2140.477000037208
+      },
+      {
+        "id": "q14",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.45643149446157594,
+        "rank": 1,
+        "ms": 2149.2308999877423
+      },
+      {
+        "id": "q15",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.4516703265414179,
+        "rank": 1,
+        "ms": 2139.181100006681
+      },
+      {
+        "id": "q16",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "late_delivery_rate"
+        ],
+        "top3": [
+          "late_delivery_rate",
+          "delivery_time",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.5228504904659064,
+        "rank": 1,
+        "ms": 2201.3796999817714
+      },
+      {
+        "id": "q17",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "average_review_score",
+          "repurchase_rate",
+          "delivery_time"
+        ],
+        "top1_similarity": 0.33657880759548564,
+        "rank": 1,
+        "ms": 2169.3228000076488
+      },
+      {
+        "id": "q18",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "average_review_score",
+          "delivery_time",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.3474277919703248,
+        "rank": 1,
+        "ms": 2150.272800005041
+      },
+      {
+        "id": "q19",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "average_review_score"
+        ],
+        "top3": [
+          "average_review_score",
+          "repurchase_rate",
+          "late_delivery_rate"
+        ],
+        "top1_similarity": 0.48538044182179507,
+        "rank": 1,
+        "ms": 2139.054799976293
+      },
+      {
+        "id": "q20",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.5400065344574209,
+        "rank": 1,
+        "ms": 2160.567799990531
+      },
+      {
+        "id": "q21",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.5033481709127019,
+        "rank": 1,
+        "ms": 2219.1816000267863
+      },
+      {
+        "id": "q22",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "repurchase_rate"
+        ],
+        "top3": [
+          "repurchase_rate",
+          "average_review_score",
+          "valid_order"
+        ],
+        "top1_similarity": 0.4921862904444886,
+        "rank": 1,
+        "ms": 2130.19630004419
+      },
+      {
+        "id": "q23",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "repurchase_rate",
+          "valid_order"
+        ],
+        "top1_similarity": 0.39929996141196034,
+        "rank": 1,
+        "ms": 2171.3988999836147
+      },
+      {
+        "id": "q24",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "repurchase_rate",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.39046539408531844,
+        "rank": 1,
+        "ms": 2198.0834000278264
+      },
+      {
+        "id": "q25",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "churn"
+        ],
+        "top3": [
+          "churn",
+          "repurchase_rate",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.579783824053983,
+        "rank": 1,
+        "ms": 2129.8302999930456
+      },
+      {
+        "id": "q26",
+        "lang": "fr",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "revenue"
+        ],
+        "top1_similarity": 0.40138415089940205,
+        "rank": 2,
+        "ms": 2149.030800035689
+      },
+      {
+        "id": "q27",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "valid_order",
+          "orders_count",
+          "revenue"
+        ],
+        "top1_similarity": 0.52880269632375,
+        "rank": 1,
+        "ms": 2230.849899991881
+      },
+      {
+        "id": "q28",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "valid_order"
+        ],
+        "top3": [
+          "orders_count",
+          "valid_order",
+          "delivery_time"
+        ],
+        "top1_similarity": 0.48299390381683727,
+        "rank": 2,
+        "ms": 2287.2921000234783
+      },
+      {
+        "id": "q29",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "delivery_time",
+          "late_delivery_rate"
+        ],
+        "top1_similarity": 0.4864782127194036,
+        "rank": 1,
+        "ms": 2182.6259000226855
+      },
+      {
+        "id": "q30",
+        "lang": "en",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "delivery_time",
+          "valid_order"
+        ],
+        "top1_similarity": 0.39537133171565864,
+        "rank": 1,
+        "ms": 2179.4945999863558
+      },
+      {
+        "id": "q31",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "valid_order",
+          "orders_count"
+        ],
+        "top1_similarity": 0.3524014285559539,
+        "rank": 1,
+        "ms": 2169.8358999565244
+      },
+      {
+        "id": "q32",
+        "lang": "en",
+        "hard": true,
+        "in_scope": true,
+        "expected": [
+          "data_coverage"
+        ],
+        "top3": [
+          "data_coverage",
+          "repurchase_rate",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.3790795577121051,
+        "rank": 1,
+        "ms": 2149.5781999547035
+      },
+      {
+        "id": "q33",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "delivery_time",
+          "data_coverage",
+          "valid_order"
+        ],
+        "top1_similarity": 0.09775219370463994,
+        "rank": null,
+        "ms": 2189.436399959959
+      },
+      {
+        "id": "q34",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "revenue",
+          "average_basket",
+          "data_coverage"
+        ],
+        "top1_similarity": 0.05831703146201572,
+        "rank": null,
+        "ms": 2169.8927999823354
+      },
+      {
+        "id": "q35",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "average_basket",
+          "revenue",
+          "repurchase_rate"
+        ],
+        "top1_similarity": 0.2850676391998922,
+        "rank": null,
+        "ms": 2170.024999999441
+      },
+      {
+        "id": "q36",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "repurchase_rate",
+          "churn",
+          "average_review_score"
+        ],
+        "top1_similarity": 0.34048183673836996,
+        "rank": null,
+        "ms": 2140.1644999859855
+      },
+      {
+        "id": "q37",
+        "lang": "fr",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "revenue",
+          "valid_order",
+          "churn"
+        ],
+        "top1_similarity": 0.24353980864044134,
+        "rank": null,
+        "ms": 2160.7044999836944
+      },
+      {
+        "id": "q38",
+        "lang": "en",
+        "hard": false,
+        "in_scope": false,
+        "expected": [],
+        "top3": [
+          "orders_count",
+          "repurchase_rate",
+          "valid_order"
+        ],
+        "top1_similarity": 0.2685344459296326,
+        "rank": null,
+        "ms": 2168.8313000486232
+      }
+    ]
+  }
+}

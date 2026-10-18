@@ -5,7 +5,8 @@ import yaml
 from psycopg.types.json import Jsonb
 
 from askdata import config
-from askdata.rag.embeddings import embed, to_pgvector
+from askdata.rag.embeddings import embed, format_document, to_pgvector
+
 
 def load_entries():
     with open(config.GLOSSARY_PATH, encoding="utf-8") as f:
@@ -27,15 +28,13 @@ def build_chunk_text(entry):
     return "\n".join(lines)
 
 
-
-def main():
-    parser = argparse.ArgumentParser(description="Index the metrics glossary in pgvector.")
-    parser.add_argument("--model", default=config.EMBEDDING_MODEL, help="Ollama embedding model name")
-    args = parser.parse_args()
-
+def index_glossary(model=None):
+    """Embed every glossary entry with the given model and store the vectors.
+    Returns (number of entries, number of dimensions)."""
+    model = model or config.EMBEDDING_MODEL
     entries = load_entries()
     chunks = [build_chunk_text(e) for e in entries]
-    vectors = embed(chunks, model=args.model)
+    vectors = embed([format_document(c, model) for c in chunks], model=model)
     if len(vectors) != len(entries):
         raise RuntimeError(f"Expected {len(entries)} embeddings, got {len(vectors)}")
 
@@ -52,15 +51,22 @@ def main():
                         embedding = EXCLUDED.embedding,
                         created_at = now()
                     """,
-                    (entry["id"], args.model, chunk, Jsonb(entry), to_pgvector(vector)),
+                    (entry["id"], model, chunk, Jsonb(entry), to_pgvector(vector)),
                 )
             # Remove vectors of entries that no longer exist in the glossary.
             cur.execute(
                 "DELETE FROM rag.glossary_chunks WHERE model = %s AND entry_id <> ALL(%s)",
-                (args.model, [e["id"] for e in entries]),
+                (model, [e["id"] for e in entries]),
             )
+    return len(entries), len(vectors[0])
 
-    print(f"Indexed {len(entries)} entries with model {args.model} ({len(vectors[0])} dimensions)")
+
+def main():
+    parser = argparse.ArgumentParser(description="Index the metrics glossary in pgvector.")
+    parser.add_argument("--model", default=config.EMBEDDING_MODEL, help="Ollama embedding model name")
+    args = parser.parse_args()
+    count, dims = index_glossary(args.model)
+    print(f"Indexed {count} entries with model {args.model} ({dims} dimensions)")
 
 
 if __name__ == "__main__":

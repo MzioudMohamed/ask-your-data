@@ -3,14 +3,7 @@ import argparse
 import psycopg
 
 from askdata import config
-from askdata.rag.embeddings import embed, to_pgvector
-
-
-def format_query(question, model):
-    """Qwen3 embedding models expect a task instruction in front of the query. Documents get none."""
-    if model.startswith("qwen3-embedding"):
-        return f"Instruct: {config.QUERY_INSTRUCTION}\nQuery:{question}"
-    return question
+from askdata.rag.embeddings import embed, format_query, to_pgvector
 
 
 def retrieve(question, k=3, model=None):
