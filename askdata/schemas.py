@@ -86,6 +86,8 @@ class Intent(Strict):
             raise ValueError("window_days only applies to repurchase_rate")
         if self.top_k is not None and not self.dimensions:
             raise ValueError("top_k needs at least one dimension to rank")
+        if self.top_k is not None and self.time_grain is not None:
+            raise ValueError("top_k cannot be combined with time_grain")
         if self.date_from and self.date_to and self.date_from > self.date_to:
             raise ValueError("date_from must not be after date_to")
         return self

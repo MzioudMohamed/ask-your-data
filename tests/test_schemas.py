@@ -41,9 +41,8 @@ def test_full_intent_is_valid():
         time_grain="month",
         date_from=date(2017, 1, 1),
         date_to=date(2017, 12, 31),
-        top_k=5,
     )
-    assert intent.top_k == 5
+    assert intent.time_grain == "month"
     assert intent.filters[0].values == ["SP", "RJ"]
 
 
@@ -97,7 +96,11 @@ def test_top_k_needs_a_dimension():
     with pytest.raises(ValidationError):
         make_intent(top_k=5)
 
-
+def test_top_k_cannot_be_combined_with_time_grain():
+    with pytest.raises(ValidationError):
+        make_intent(dimensions=["customer_state"], time_grain="month", top_k=5)
+    assert make_intent(dimensions=["customer_state"], top_k=5).top_k == 5
+    
 @pytest.mark.parametrize("top_k", [0, 51])
 def test_top_k_bounds(top_k):
     with pytest.raises(ValidationError):
