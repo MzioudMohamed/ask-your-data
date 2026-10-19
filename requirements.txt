@@ -2,6 +2,7 @@ dbt-core==1.12.6
 dbt-postgres==1.11.0
 psycopg==3.3.6
 psycopg-binary==3.3.6
+pydantic==2.14.1
 pytest==9.1.1
 PyYAML==6.0.3
 requests==2.34.2

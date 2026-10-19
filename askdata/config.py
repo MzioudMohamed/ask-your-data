@@ -27,3 +27,5 @@ DB_READER = {
     "password": os.getenv("POSTGRES_READER_PASSWORD", "askdata_reader_dev"),
     "dbname": os.getenv("POSTGRES_DB", "askdata"),
 }
+
+MIN_CONFIDENCE = float(os.getenv("MIN_CONFIDENCE", "0.6"))

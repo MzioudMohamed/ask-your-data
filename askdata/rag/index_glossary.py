@@ -1,16 +1,13 @@
 import argparse
 
 import psycopg
-import yaml
+from askdata.glossary import load_entries
 from psycopg.types.json import Jsonb
 
 from askdata import config
 from askdata.rag.embeddings import embed, format_document, to_pgvector
 
 
-def load_entries():
-    with open(config.GLOSSARY_PATH, encoding="utf-8") as f:
-        return yaml.safe_load(f)["entries"]
 
 
 def build_chunk_text(entry):
