@@ -54,9 +54,9 @@ def test_filter_values_travel_as_parameters_not_in_the_sql():
     assert "ANY(%(filter_0)s)" in plan.sql
 
 
-def test_not_in_filter_uses_all():
+def test_not_in_filter_negates_any():
     plan = build_plan(make_intent(filters=[{"dimension": "customer_state", "op": "not_in", "values": ["SP"]}]))
-    assert "<> ALL(%(filter_0)s)" in plan.sql
+    assert "NOT (customer_state = ANY(%(filter_0)s))" in plan.sql
 
 
 def test_date_range_is_inclusive_of_the_last_day():

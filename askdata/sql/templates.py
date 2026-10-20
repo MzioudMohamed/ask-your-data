@@ -134,7 +134,7 @@ def build_plan(intent: Intent) -> SQLPlan:
         params["date_to_exclusive"] = intent.date_to + timedelta(days=1)
     for i, f in enumerate(intent.filters):
         name = f"filter_{i}"
-        where.append(f"{f.dimension} = ANY(%({name})s)" if f.op == "in" else f"{f.dimension} <> ALL(%({name})s)")
+        where.append(f"{f.dimension} = ANY(%({name})s)" if f.op == "in" else f"NOT ({f.dimension} = ANY(%({name})s))")
         params[name] = list(f.values)
 
     if intent.time_grain:
