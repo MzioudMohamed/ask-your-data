@@ -1,0 +1,29 @@
+[
+  {
+    "model": "llama3.2:3b",
+    "median_s": 11.129515899985563,
+    "median_tps": 6.224788779880997,
+    "prompt_tokens": 947,
+    "json_ok": 1.0,
+    "schema_ok": 1.0,
+    "fields": 0.7368421052631579
+  },
+  {
+    "model": "qwen3:4b",
+    "median_s": 21.96526550000999,
+    "median_tps": 4.198497409838291,
+    "prompt_tokens": 996,
+    "json_ok": 1.0,
+    "schema_ok": 0.6666666666666666,
+    "fields": 0.8947368421052632
+  },
+  {
+    "model": "gemma3:4b",
+    "median_s": 20.31749825004954,
+    "median_tps": 4.042952937090851,
+    "prompt_tokens": 1049,
+    "json_ok": 1.0,
+    "schema_ok": 1.0,
+    "fields": 0.7368421052631579
+  }
+]

@@ -29,3 +29,6 @@ DB_READER = {
 }
 
 MIN_CONFIDENCE = float(os.getenv("MIN_CONFIDENCE", "0.6"))
+LLM_MODEL = os.getenv("LLM_MODEL", "llama3.2:3b")
+
+MIN_SIMILARITY = float(os.getenv("MIN_SIMILARITY", "0.46"))
