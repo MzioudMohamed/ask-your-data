@@ -1,0 +1,103 @@
+version: 1
+# Test questions for the whole baseline pipeline (question -> intent -> result).
+# split: dev  = used to improve the prompt and the thresholds;
+#        test = frozen: only used for the final numbers.
+# status: what the pipeline should answer: answered, definition, unsupported or needs_clarification.
+# expected: for status "answered", the Intent the question should produce (confidence and clarification left out).
+#           Fields that are left out keep their default value. The result of this intent is the reference result.
+# cites: for definition and for unsupported questions, the glossary entry that should be cited.
+# hard: true marks questions with a trap (relative dates, city names, ambiguity, lexical look-alikes).
+questions:
+  # ---- revenue ----
+  - {id: i01, split: dev, lang: fr, text: "Combien avons-nous vendu en 2018 ?", status: answered,
+     expected: {metrics: [revenue], date_from: "2018-01-01", date_to: "2018-12-31"}}
+  - {id: i02, split: test, lang: en, text: "Total revenue per year", status: answered,
+     expected: {metrics: [revenue], time_grain: year}}
+  - {id: i03, split: dev, lang: fr, text: "Chiffre d'affaires par état en 2017", status: answered,
+     expected: {metrics: [revenue], dimensions: [customer_state], date_from: "2017-01-01", date_to: "2017-12-31"}}
+  - {id: i04, split: test, lang: en, text: "Which 5 product categories bring in the most revenue?", status: answered,
+     expected: {metrics: [revenue], dimensions: [product_category], top_k: 5, sort: desc}}
+  - {id: i05, split: test, lang: fr, hard: true, text: "Chiffre d'affaires par mois en 2017 pour les vendeurs de Rio de Janeiro", status: answered,
+     expected: {metrics: [revenue], time_grain: month, date_from: "2017-01-01", date_to: "2017-12-31",
+                filters: [{dimension: seller_state, op: in, values: [RJ]}]}}
+  # ---- orders ----
+  - {id: i06, split: dev, lang: en, text: "How many orders were placed each month in 2018?", status: answered,
+     expected: {metrics: [orders_count], time_grain: month, date_from: "2018-01-01", date_to: "2018-12-31"}}
+  - {id: i07, split: test, lang: fr, text: "Nombre de commandes par statut", status: answered,
+     expected: {metrics: [orders_count], dimensions: [order_status]}}
+  - {id: i08, split: dev, lang: en, text: "Which 3 states have the fewest orders?", status: answered,
+     expected: {metrics: [orders_count], dimensions: [customer_state], top_k: 3, sort: asc}}
+  - {id: i09, split: test, lang: fr, hard: true, text: "Combien de commandes viennent d'ailleurs que de São Paulo ?", status: answered,
+     expected: {metrics: [orders_count], filters: [{dimension: customer_state, op: not_in, values: [SP]}]}}
+  # ---- average basket ----
+  - {id: i10, split: dev, lang: fr, text: "Panier moyen dans chaque état brésilien", status: answered,
+     expected: {metrics: [average_basket], dimensions: [customer_state]}}
+  - {id: i11, split: test, lang: en, text: "How has the average order value evolved by month?", status: answered,
+     expected: {metrics: [average_basket], time_grain: month}}
+  - {id: i12, split: dev, lang: fr, text: "Panier moyen en 2018 pour les clients du Minas Gerais", status: answered,
+     expected: {metrics: [average_basket], date_from: "2018-01-01", date_to: "2018-12-31",
+                filters: [{dimension: customer_state, op: in, values: [MG]}]}}
+  # ---- delivery time ----
+  - {id: i13, split: test, lang: en, text: "What is the average delivery time by state?", status: answered,
+     expected: {metrics: [delivery_time], dimensions: [customer_state]}}
+  - {id: i14, split: dev, lang: fr, text: "Délai de livraison moyen par mois en 2017", status: answered,
+     expected: {metrics: [delivery_time], time_grain: month, date_from: "2017-01-01", date_to: "2017-12-31"}}
+  - {id: i15, split: test, lang: en, text: "Top 3 fastest states for delivery", status: answered,
+     expected: {metrics: [delivery_time], dimensions: [customer_state], top_k: 3, sort: asc}}
+  # ---- late deliveries ----
+  - {id: i16, split: dev, lang: fr, text: "Pourcentage de commandes livrées en retard par mois", status: answered,
+     expected: {metrics: [late_delivery_rate], time_grain: month}}
+  - {id: i17, split: test, lang: en, text: "Which 5 states have the highest rate of late deliveries?", status: answered,
+     expected: {metrics: [late_delivery_rate], dimensions: [customer_state], top_k: 5, sort: desc}}
+  - {id: i18, split: dev, lang: fr, text: "Taux de retard de livraison en 2018", status: answered,
+     expected: {metrics: [late_delivery_rate], date_from: "2018-01-01", date_to: "2018-12-31"}}
+  # ---- review score ----
+  - {id: i19, split: test, lang: en, text: "What is the average customer rating per state?", status: answered,
+     expected: {metrics: [average_review_score], dimensions: [customer_state]}}
+  - {id: i20, split: dev, lang: fr, text: "Évolution mensuelle de la note moyenne en 2018", status: answered,
+     expected: {metrics: [average_review_score], time_grain: month, date_from: "2018-01-01", date_to: "2018-12-31"}}
+  - {id: i21, split: test, lang: en, text: "Average review score for orders from RJ", status: answered,
+     expected: {metrics: [average_review_score], filters: [{dimension: customer_state, op: in, values: [RJ]}]}}
+  # ---- repurchase ----
+  - {id: i22, split: dev, lang: fr, text: "Taux de réachat par cohorte mensuelle", status: answered,
+     expected: {metrics: [repurchase_rate], time_grain: month}}
+  - {id: i23, split: test, lang: en, text: "What share of customers buy again within 90 days?", status: answered,
+     expected: {metrics: [repurchase_rate], window_days: 90}}
+  - {id: i24, split: dev, lang: fr, hard: true, text: "Part des clients qui rachètent sous 6 mois, par état", status: answered,
+     expected: {metrics: [repurchase_rate], window_days: 180, dimensions: [customer_state]}}
+  - {id: i25, split: test, lang: en, text: "Repurchase rate within 180 days by cohort year", status: answered,
+     expected: {metrics: [repurchase_rate], window_days: 180, time_grain: year}}
+  # ---- item level and several metrics ----
+  - {id: i26, split: dev, lang: en, text: "Revenue by seller state", status: answered,
+     expected: {metrics: [revenue], dimensions: [seller_state]}}
+  - {id: i27, split: test, lang: fr, text: "Chiffre d'affaires et nombre de commandes par état", status: answered,
+     expected: {metrics: [revenue, orders_count], dimensions: [customer_state]}}
+  - {id: i28, split: dev, lang: en, text: "Show me revenue and average basket per month", status: answered,
+     expected: {metrics: [revenue, average_basket], time_grain: month}}
+  - {id: i29, split: test, lang: fr, hard: true, text: "Top 3 des catégories de produits par chiffre d'affaires à São Paulo", status: answered,
+     expected: {metrics: [revenue], dimensions: [product_category], top_k: 3, sort: desc,
+                filters: [{dimension: customer_state, op: in, values: [SP]}]}}
+  # ---- relative dates (the data ends on 2018-10-17) ----
+  - {id: i30, split: dev, lang: en, hard: true, text: "Revenue last year", status: answered,
+     expected: {metrics: [revenue], date_from: "2017-01-01", date_to: "2017-12-31"}}
+  - {id: i31, split: test, lang: fr, hard: true, text: "Nombre de commandes au premier semestre 2018", status: answered,
+     expected: {metrics: [orders_count], date_from: "2018-01-01", date_to: "2018-06-30"}}
+  # ---- definitions, answered from the glossary ----
+  - {id: i32, split: dev, lang: fr, text: "Les commandes en cours de livraison comptent-elles dans le chiffre d'affaires ?",
+     status: definition, cites: valid_order}
+  - {id: i33, split: test, lang: en, text: "From which date is the data reliable?", status: definition, cites: data_coverage}
+  - {id: i34, split: dev, lang: fr, text: "Quelle est la dernière date présente dans les données ?", status: definition, cites: data_coverage}
+  - {id: i35, split: test, lang: en, text: "Which orders do you exclude from the sales figures?", status: definition, cites: valid_order}
+  # ---- churn: not defined, the answer explains why ----
+  - {id: i36, split: dev, lang: en, text: "How many customers did we lose?", status: unsupported, cites: churn}
+  - {id: i37, split: test, lang: fr, text: "Taux d'attrition des clients en 2018", status: unsupported, cites: churn}
+  - {id: i38, split: test, lang: fr, text: "Quel pourcentage de clients ne commande plus chez nous ?", status: unsupported, cites: churn}
+  # ---- out of scope (some share words with the glossary on purpose) ----
+  - {id: i39, split: dev, lang: fr, hard: true, text: "Quel temps fera-t-il demain ?", status: unsupported}
+  - {id: i40, split: test, lang: en, hard: true, text: "How long does it take to learn SQL?", status: unsupported}
+  - {id: i41, split: dev, lang: fr, text: "Quelle est la marge bénéficiaire par produit ?", status: unsupported}
+  - {id: i42, split: test, lang: en, text: "What is the customer lifetime value?", status: unsupported}
+  - {id: i43, split: dev, lang: en, text: "What is the best-selling smartphone brand worldwide?", status: unsupported}
+  # ---- too vague: the system should ask a question ----
+  - {id: i44, split: dev, lang: en, hard: true, text: "How are we doing?", status: needs_clarification}
+  - {id: i45, split: test, lang: fr, hard: true, text: "Donne-moi les chiffres", status: needs_clarification}
