@@ -1,0 +1,756 @@
+{
+  "llama3.2:3b": {
+    "summary": {
+      "questions": 22,
+      "correct": 8,
+      "correct_rate": 0.36363636363636365,
+      "answerable": 15,
+      "result_match": 4,
+      "intent_valid": 12,
+      "intent_exact": 5,
+      "not_answerable": 7,
+      "false_answers": 3,
+      "missed_answers": 7,
+      "by_status": {
+        "answered": [
+          4,
+          15
+        ],
+        "definition": [
+          1,
+          2
+        ],
+        "needs_clarification": [
+          0,
+          1
+        ],
+        "unsupported": [
+          3,
+          4
+        ]
+      },
+      "by_lang": {
+        "en": [
+          4,
+          8
+        ],
+        "fr": [
+          4,
+          14
+        ]
+      },
+      "hard": [
+        0,
+        4
+      ],
+      "median_s": 10.782849999999998,
+      "median_llm_s": 12.0765
+    },
+    "rows": [
+      {
+        "id": "i01",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "answered",
+        "status_ok": true,
+        "intent_valid": true,
+        "intent_exact": true,
+        "result_match": true,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 50262.5,
+        "llm_ms": 45802.3,
+        "intent": {
+          "metrics": [
+            "revenue"
+          ],
+          "date_from": "2018-01-01",
+          "date_to": "2018-12-31",
+          "confidence": 0.9
+        },
+        "text": "Combien avons-nous vendu en 2018 ?",
+        "correct": true,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i03",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "answered",
+        "status_ok": true,
+        "intent_valid": true,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {
+          "dimensions": [
+            [
+              "customer_state"
+            ],
+            []
+          ]
+        },
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 10259.3,
+        "llm_ms": 9477.1,
+        "intent": {
+          "metrics": [
+            "revenue"
+          ],
+          "date_from": "2017-01-01",
+          "date_to": "2017-12-31",
+          "confidence": 0.9
+        },
+        "text": "Chiffre d'affaires par état en 2017",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i06",
+        "split": "dev",
+        "lang": "en",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "answered",
+        "status_ok": true,
+        "intent_valid": true,
+        "intent_exact": true,
+        "result_match": true,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 12153.3,
+        "llm_ms": 11352.7,
+        "intent": {
+          "metrics": [
+            "orders_count"
+          ],
+          "time_grain": "month",
+          "date_from": "2018-01-01",
+          "date_to": "2018-12-31",
+          "confidence": 0.9
+        },
+        "text": "How many orders were placed each month in 2018?",
+        "correct": true,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i08",
+        "split": "dev",
+        "lang": "en",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "answered",
+        "status_ok": true,
+        "intent_valid": true,
+        "intent_exact": true,
+        "result_match": true,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 9892.0,
+        "llm_ms": 9052.3,
+        "intent": {
+          "metrics": [
+            "orders_count"
+          ],
+          "dimensions": [
+            "customer_state"
+          ],
+          "top_k": 3,
+          "sort": "asc",
+          "confidence": 0.9
+        },
+        "text": "Which 3 states have the fewest orders?",
+        "correct": true,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i10",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "error",
+        "status_ok": false,
+        "intent_valid": false,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {},
+        "cite_ok": null,
+        "error": "the model produced an invalid intent (: Value error, average_basket cannot be broken down or filtered by product_category)",
+        "total_ms": 16099.3,
+        "llm_ms": 15310.3,
+        "intent": null,
+        "text": "Panier moyen dans chaque état brésilien",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": true
+      },
+      {
+        "id": "i12",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "error",
+        "status_ok": false,
+        "intent_valid": false,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {},
+        "cite_ok": null,
+        "error": "the model produced an invalid intent (: Value error, average_basket cannot be broken down or filtered by product_category)",
+        "total_ms": 20040.6,
+        "llm_ms": 19189.7,
+        "intent": null,
+        "text": "Panier moyen en 2018 pour les clients du Minas Gerais",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": true
+      },
+      {
+        "id": "i14",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "answered",
+        "status_ok": true,
+        "intent_valid": true,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {
+          "dimensions": [
+            [],
+            [
+              "customer_state"
+            ]
+          ]
+        },
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 13002.1,
+        "llm_ms": 12196.5,
+        "intent": {
+          "metrics": [
+            "delivery_time"
+          ],
+          "dimensions": [
+            "customer_state"
+          ],
+          "time_grain": "month",
+          "date_from": "2017-01-01",
+          "date_to": "2017-12-31",
+          "confidence": 0.9
+        },
+        "text": "Délai de livraison moyen par mois en 2017",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i16",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "needs_clarification",
+        "status_ok": false,
+        "intent_valid": true,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {
+          "date_from": [
+            null,
+            "2018-01-01"
+          ],
+          "date_to": [
+            null,
+            "2018-10-17"
+          ]
+        },
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 16157.0,
+        "llm_ms": 15548.6,
+        "intent": {
+          "metrics": [
+            "late_delivery_rate"
+          ],
+          "time_grain": "month",
+          "date_from": "2018-01-01",
+          "date_to": "2018-10-17",
+          "confidence": 0.9,
+          "clarification": "Pourcentage de commandes livrées en retard par mois"
+        },
+        "text": "Pourcentage de commandes livrées en retard par mois",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": true
+      },
+      {
+        "id": "i18",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "answered",
+        "status_ok": true,
+        "intent_valid": true,
+        "intent_exact": true,
+        "result_match": true,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 8814.2,
+        "llm_ms": 7967.5,
+        "intent": {
+          "metrics": [
+            "late_delivery_rate"
+          ],
+          "date_from": "2018-01-01",
+          "date_to": "2018-12-31",
+          "confidence": 0.9
+        },
+        "text": "Taux de retard de livraison en 2018",
+        "correct": true,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i20",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "answered",
+        "status_ok": true,
+        "intent_valid": true,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {
+          "dimensions": [
+            [],
+            [
+              "customer_state"
+            ]
+          ]
+        },
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 16251.5,
+        "llm_ms": 15449.8,
+        "intent": {
+          "metrics": [
+            "average_review_score"
+          ],
+          "dimensions": [
+            "customer_state"
+          ],
+          "time_grain": "month",
+          "date_from": "2018-01-01",
+          "date_to": "2018-12-31",
+          "confidence": 0.9
+        },
+        "text": "Évolution mensuelle de la note moyenne en 2018",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i22",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "needs_clarification",
+        "status_ok": false,
+        "intent_valid": true,
+        "intent_exact": true,
+        "result_match": false,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 12626.5,
+        "llm_ms": 12076.5,
+        "intent": {
+          "metrics": [
+            "repurchase_rate"
+          ],
+          "time_grain": "month",
+          "confidence": 0.9,
+          "clarification": "Churn is not defined for this dataset."
+        },
+        "text": "Taux de réachat par cohorte mensuelle",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": true
+      },
+      {
+        "id": "i24",
+        "split": "dev",
+        "lang": "fr",
+        "hard": true,
+        "expected_status": "answered",
+        "status": "answered",
+        "status_ok": true,
+        "intent_valid": true,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {
+          "dimensions": [
+            [
+              "customer_state"
+            ],
+            []
+          ],
+          "filters": [
+            [],
+            [
+              {
+                "dimension": "customer_state",
+                "op": "in",
+                "values": [
+                  "BA"
+                ]
+              },
+              {
+                "dimension": "customer_state",
+                "op": "in",
+                "values": [
+                  "RJ"
+                ]
+              },
+              {
+                "dimension": "customer_state",
+                "op": "in",
+                "values": [
+                  "SP"
+                ]
+              }
+            ]
+          ],
+          "time_grain": [
+            null,
+            "month"
+          ]
+        },
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 18763.2,
+        "llm_ms": 17898.8,
+        "intent": {
+          "metrics": [
+            "repurchase_rate"
+          ],
+          "filters": [
+            {
+              "dimension": "customer_state",
+              "values": [
+                "SP"
+              ]
+            },
+            {
+              "dimension": "customer_state",
+              "values": [
+                "RJ"
+              ]
+            },
+            {
+              "dimension": "customer_state",
+              "values": [
+                "BA"
+              ]
+            }
+          ],
+          "time_grain": "month",
+          "window_days": 180,
+          "confidence": 0.9
+        },
+        "text": "Part des clients qui rachètent sous 6 mois, par état",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i26",
+        "split": "dev",
+        "lang": "en",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "unsupported",
+        "status_ok": false,
+        "intent_valid": false,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 576.4,
+        "llm_ms": null,
+        "intent": null,
+        "text": "Revenue by seller state",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": true
+      },
+      {
+        "id": "i28",
+        "split": "dev",
+        "lang": "en",
+        "hard": false,
+        "expected_status": "answered",
+        "status": "needs_clarification",
+        "status_ok": false,
+        "intent_valid": true,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {
+          "date_from": [
+            null,
+            "2018-01-01"
+          ],
+          "date_to": [
+            null,
+            "2018-10-17"
+          ]
+        },
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 18742.0,
+        "llm_ms": 18205.9,
+        "intent": {
+          "metrics": [
+            "revenue",
+            "average_basket"
+          ],
+          "time_grain": "month",
+          "date_from": "2018-01-01",
+          "date_to": "2018-10-17",
+          "confidence": 0.9,
+          "clarification": "Clarification needed: average basket calculation, what if no items in order?"
+        },
+        "text": "Show me revenue and average basket per month",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": true
+      },
+      {
+        "id": "i30",
+        "split": "dev",
+        "lang": "en",
+        "hard": true,
+        "expected_status": "answered",
+        "status": "needs_clarification",
+        "status_ok": false,
+        "intent_valid": true,
+        "intent_exact": false,
+        "result_match": false,
+        "differences": {
+          "date_from": [
+            "2017-01-01",
+            null
+          ],
+          "date_to": [
+            "2017-12-31",
+            null
+          ]
+        },
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 11306.4,
+        "llm_ms": 10713.2,
+        "intent": {
+          "metrics": [
+            "revenue"
+          ],
+          "confidence": 0.9,
+          "clarification": "What is the revenue in 2017?"
+        },
+        "text": "Revenue last year",
+        "correct": false,
+        "false_answer": false,
+        "missed_answer": true
+      },
+      {
+        "id": "i32",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "definition",
+        "status": "answered",
+        "status_ok": false,
+        "intent_valid": true,
+        "intent_exact": null,
+        "result_match": null,
+        "differences": {},
+        "cite_ok": false,
+        "error": null,
+        "total_ms": 5986.8,
+        "llm_ms": 5155.3,
+        "intent": {
+          "metrics": [
+            "revenue"
+          ],
+          "confidence": 0.9
+        },
+        "text": "Les commandes en cours de livraison comptent-elles dans le chiffre d'affaires ?",
+        "correct": false,
+        "false_answer": true,
+        "missed_answer": false
+      },
+      {
+        "id": "i34",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "definition",
+        "status": "definition",
+        "status_ok": true,
+        "intent_valid": false,
+        "intent_exact": null,
+        "result_match": null,
+        "differences": {},
+        "cite_ok": true,
+        "error": null,
+        "total_ms": 665.5,
+        "llm_ms": null,
+        "intent": null,
+        "text": "Quelle est la dernière date présente dans les données ?",
+        "correct": true,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i36",
+        "split": "dev",
+        "lang": "en",
+        "hard": false,
+        "expected_status": "unsupported",
+        "status": "unsupported",
+        "status_ok": true,
+        "intent_valid": false,
+        "intent_exact": null,
+        "result_match": null,
+        "differences": {},
+        "cite_ok": true,
+        "error": null,
+        "total_ms": 569.2,
+        "llm_ms": null,
+        "intent": null,
+        "text": "How many customers did we lose?",
+        "correct": true,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i39",
+        "split": "dev",
+        "lang": "fr",
+        "hard": true,
+        "expected_status": "unsupported",
+        "status": "answered",
+        "status_ok": false,
+        "intent_valid": true,
+        "intent_exact": null,
+        "result_match": null,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 6343.8,
+        "llm_ms": 5724.9,
+        "intent": {
+          "metrics": [
+            "delivery_time"
+          ],
+          "confidence": 0.9
+        },
+        "text": "Quel temps fera-t-il demain ?",
+        "correct": false,
+        "false_answer": true,
+        "missed_answer": false
+      },
+      {
+        "id": "i41",
+        "split": "dev",
+        "lang": "fr",
+        "hard": false,
+        "expected_status": "unsupported",
+        "status": "unsupported",
+        "status_ok": true,
+        "intent_valid": false,
+        "intent_exact": null,
+        "result_match": null,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 725.1,
+        "llm_ms": null,
+        "intent": null,
+        "text": "Quelle est la marge bénéficiaire par produit ?",
+        "correct": true,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i43",
+        "split": "dev",
+        "lang": "en",
+        "hard": false,
+        "expected_status": "unsupported",
+        "status": "unsupported",
+        "status_ok": true,
+        "intent_valid": false,
+        "intent_exact": null,
+        "result_match": null,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 668.3,
+        "llm_ms": null,
+        "intent": null,
+        "text": "What is the best-selling smartphone brand worldwide?",
+        "correct": true,
+        "false_answer": false,
+        "missed_answer": false
+      },
+      {
+        "id": "i44",
+        "split": "dev",
+        "lang": "en",
+        "hard": true,
+        "expected_status": "needs_clarification",
+        "status": "answered",
+        "status_ok": false,
+        "intent_valid": true,
+        "intent_exact": null,
+        "result_match": null,
+        "differences": {},
+        "cite_ok": null,
+        "error": null,
+        "total_ms": 8585.1,
+        "llm_ms": 7875.9,
+        "intent": {
+          "metrics": [
+            "average_basket"
+          ],
+          "confidence": 0.9
+        },
+        "text": "How are we doing?",
+        "correct": false,
+        "false_answer": true,
+        "missed_answer": false
+      }
+    ]
+  }
+}
